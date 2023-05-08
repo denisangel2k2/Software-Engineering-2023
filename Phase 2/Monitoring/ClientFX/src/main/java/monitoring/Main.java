@@ -18,13 +18,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    IEmployeeRepository employeeRepository=new EmployeeRepository();
-    ITaskRepository taskRepository=new TaskRepository();
-    IBossRepository bossRepository=new BossRepository();
-    IPresenceRepository presenceRepository=new PresenceRepository();
+  //  IEmployeeRepository employeeRepository;//=new EmployeeRepository();
+  //  ITaskRepository taskRepository;//=new TaskRepository();
+  //  IBossRepository bossRepository;//=new BossRepository();
+   // IPresenceRepository presenceRepository;//=new PresenceRepository();
 
-    IService service=new ServiceImpl(presenceRepository,taskRepository,employeeRepository,bossRepository);
-
+    //instantiate the repos in service for better memory handling
+  //  IService service=new ServiceImpl(presenceRepository,taskRepository,employeeRepository,bossRepository);
+    IService service=new ServiceImpl();
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("loginView.fxml"));
