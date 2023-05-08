@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'application'
+}
+
+group 'Monitoring'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml'  ]
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    runtimeClasspath('org.openjfx:javafx-fxml:19.0.2.1')
+
+    implementation project(':Model')
+    implementation project(':Services')
+    implementation project(':Persistence')
+
+    implementation 'org.hibernate:hibernate-core:5.2.10.Final'
+    implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+    implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+    implementation 'org.javassist:javassist:3.29.2-GA'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application{
+    mainClass='monitoring.Main'
+}
