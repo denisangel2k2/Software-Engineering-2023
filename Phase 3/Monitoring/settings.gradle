@@ -1,0 +1,6 @@
+rootProject.name = 'Monitoring'
+include 'ClientFX'
+include 'Services'
+include 'Persistence'
+include 'Model'
+
