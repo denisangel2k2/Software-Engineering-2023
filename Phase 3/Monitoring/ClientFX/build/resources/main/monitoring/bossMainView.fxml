@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -20,5 +21,6 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <TextField fx:id="searchByNameTextField" layoutX="56.0" layoutY="112.0" prefHeight="25.0" prefWidth="270.0" promptText="Last name" />
    </children>
 </AnchorPane>

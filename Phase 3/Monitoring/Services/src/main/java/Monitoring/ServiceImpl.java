@@ -140,4 +140,12 @@ public class ServiceImpl implements IService {
 
         taskRepository.add(task);
     }
+
+    @Override
+    public List<Employee> getEmployeesByName(String name) {
+        if (this.employeeRepository == null)
+            this.employeeRepository = new EmployeeRepository();
+        return getEmployeesAtWork().stream()
+                .filter(employee -> employee.getName().contains(name.toLowerCase())).collect(Collectors.toList());
+    }
 }

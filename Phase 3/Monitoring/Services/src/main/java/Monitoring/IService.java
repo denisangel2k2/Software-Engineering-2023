@@ -12,6 +12,7 @@ public interface IService {
     void finishTask(Integer taskId);
     void checkOut(Integer employeeId);
     List<Employee> getEmployeesAtWork();
+    List<Employee> getEmployeesByName(String name);
     String getCheckinTime(Integer employeeId);
     void addTask(String deadline, String description, Boss boss, Employee employee);
 }

@@ -9,10 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -24,6 +21,8 @@ public class BossMainController {
     private IService service;
     private Boss loggedBoss;
 
+    @FXML
+    private TextField searchByNameTextField;
     @FXML
     private TableColumn<Employee, String> checkInTimeColumn;
 
@@ -43,6 +42,13 @@ public class BossMainController {
 
         executorService.scheduleAtFixedRate(task, 0, 15, TimeUnit.SECONDS);
         initLists();
+        searchByNameTextField.textProperty().addListener(o -> {
+            if (searchByNameTextField.getText().equals("")) {
+                initLists();
+            } else {
+                employees.setAll(service.getEmployeesByName(searchByNameTextField.getText()));
+            }
+        });
 
     }
     public Employee getSelectedEmployee(){
@@ -90,8 +96,8 @@ public class BossMainController {
     @FXML
     private void initialize(){
 
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("prenume"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("prenume"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         checkInTimeColumn.setCellFactory(cellFact->{
             TableCell<Employee, String> cell = new TableCell<>() {
                 @Override
